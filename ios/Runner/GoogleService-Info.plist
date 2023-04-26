@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>326686290738-v16rjg7r8iejjoh671m8jfikrnkkk870.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.326686290738-v16rjg7r8iejjoh671m8jfikrnkkk870</string>
+	<key>API_KEY</key>
+	<string>AIzaSyArsdJwkSOO75trJrJuZ3isp1NP2S2pG5k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>326686290738</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.flutter.flutter.app</string>
+	<key>PROJECT_ID</key>
+	<string>fitness-2e74c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fitness-2e74c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:326686290738:ios:5da4d339ce22fdda8d5d2b</string>
+</dict>
+</plist>
