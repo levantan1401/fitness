@@ -2,6 +2,7 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/core/const/color_constants.dart';
 import 'package:fitness/screens/onboarding/page/onboarding_page.dart';
+import 'package:fitness/screens/sign_up/page/sign_up_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: OnboardingPage(),
+      // home:  OnboardingPage(),
+      home: SignUpPage(),
     );
   }
 }

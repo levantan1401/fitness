@@ -1,5 +1,6 @@
 import 'package:fitness/screens/onboarding/bloc/onboarding_bloc.dart';
 import 'package:fitness/screens/onboarding/widget/onboarding_content.dart';
+import 'package:fitness/screens/sign_up/page/sign_up_page.dart';
 // import 'package:fitness/screens/sign_up/page/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,13 +19,13 @@ class OnboardingPage extends StatelessWidget {
       child: BlocConsumer<OnboardingBloc, OnboardingState>(
         listenWhen: (_, currState) => currState is NextScreenState,
         listener: (context, state) {
-          // Navigator.of(context).pushReplacement(
-          //   MaterialPageRoute(
-          //     builder: (_) {
-          //       // return SignUpPage();
-          //     },
-          //   ),
-          // );
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (_) {
+                return SignUpPage();
+              },
+            ),
+          );
         },
         buildWhen: (_, currState) => currState is OnboardingInitial,
         builder: (context, state) {
