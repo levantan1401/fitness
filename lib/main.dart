@@ -2,6 +2,7 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/core/const/color_constants.dart';
 import 'package:fitness/screens/onboarding/page/onboarding_page.dart';
+import 'package:fitness/screens/sign_in/page/sign_in_page.dart';
 import 'package:fitness/screens/sign_up/page/sign_up_page.dart';
 
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home:  OnboardingPage(),
-      home: SignUpPage(),
+      home: SignInPage(),
     );
   }
 }
