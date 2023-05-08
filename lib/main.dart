@@ -1,12 +1,17 @@
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/core/const/color_constants.dart';
+import 'package:fitness/screens/home/page/home_page.dart';
 import 'package:fitness/screens/onboarding/page/onboarding_page.dart';
 import 'package:fitness/screens/sign_in/page/sign_in_page.dart';
 import 'package:fitness/screens/sign_up/page/sign_up_page.dart';
+import 'package:fitness/screens/tab_bar/page/tab_bar_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,27 +19,76 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => new _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // static late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = NotificationService.flutterLocalNotificationsPlugin;
+
+  @override
+  initState() {
+    super.initState();
+    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
+    // final IOSInitializationSettings initializationSettingsIOS = IOSInitializationSettings();
+    // final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+
+    tz.initializeTimeZones();
+
+    // flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: selectNotification);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // final isLoggedIn = FirebaseAuth.instance.currentUser != null;
-
+    final isLoggedIn = FirebaseAuth.instance.currentUser != null;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fitness',
       theme: ThemeData(
-        textTheme: const TextTheme(
-            bodyText1: TextStyle(color: ColorConstants.textColor)),
+        textTheme: TextTheme(bodyText1: TextStyle(color: ColorConstants.textColor)),
         fontFamily: 'NotoSansKR',
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home:  OnboardingPage(),
-      home: SignInPage(),
+      home: isLoggedIn ? TabBarPage() : OnboardingPage(),
+    );
+  }
+
+  Future selectNotification(String? payload) async {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return new AlertDialog(
+          title: Text("PayLoad"),
+          content: Text("Payload : $payload"),
+        );
+      },
     );
   }
 }
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     final isLoggedIn = FirebaseAuth.instance.currentUser != null;
+
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Fitness',
+//       theme: ThemeData(
+//         textTheme: const TextTheme(
+//             bodyText1: TextStyle(color: ColorConstants.textColor)),
+//         fontFamily: 'NotoSansKR',
+//         scaffoldBackgroundColor: Colors.white,
+//         visualDensity: VisualDensity.adaptivePlatformDensity,
+//       ),
+//       // home:  OnboardingPage(),
+//       // home: SignInPage(),
+//       home: const HomePage(),
+//     );
+//   }
+// }

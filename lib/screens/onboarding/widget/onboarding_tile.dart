@@ -21,7 +21,7 @@ class OnboardingTile extends StatelessWidget {
           const SizedBox(height: 65),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 24.0,
             ),
@@ -33,7 +33,7 @@ class OnboardingTile extends StatelessWidget {
             ),
             child: Text(
               mainText,
-              style: TextStyle(
+              style:const TextStyle(
                 fontSize: 16.0,
               ),
               textAlign: TextAlign.center,

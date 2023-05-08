@@ -42,7 +42,7 @@ class OnboardingContent extends StatelessWidget {
   Widget _createStatic(OnboardingBloc bloc) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         BlocBuilder<OnboardingBloc, OnboardingState>(
@@ -51,7 +51,7 @@ class OnboardingContent extends StatelessWidget {
             return DotsIndicator(
               dotsCount: 3,
               position: bloc.pageIndex.toDouble(),
-              decorator: DotsDecorator(
+              decorator: const DotsDecorator(
                 color: Colors.grey,
                 activeColor: ColorConstants.primaryColor,
               ),
@@ -79,7 +79,7 @@ class OnboardingContent extends StatelessWidget {
                           onPressed: () {
                             bloc.add(PageChangedEvent());
                           },
-                          child: Padding(
+                          child: const Padding(
                             padding: const EdgeInsets.all(24.0),
                             child: Icon(
                               Icons.east_rounded,

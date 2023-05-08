@@ -31,42 +31,49 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #BloC
-  flutter_bloc: ^8.1.2
+  #BloC  
+  flutter_bloc: ^7.0.1
 
-  #Firebase 
-  firebase_core: ^2.10.0
-  firebase_auth: ^4.4.2
-  firebase_storage: ^11.1.1
+  # Firebase
+  firebase_core: ^1.4.0
+  firebase_auth: ^3.0.1
+  firebase_storage: ^10.0.1
 
-  
+
+  # IOS Icons
+  cupertino_icons: ^1.0.2
+
   # Page View dots indicator
   dots_indicator: ^2.0.0
 
   # Percent circle
-  percent_indicator: ^4.2.3
+  percent_indicator: ^3.0.1
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  
   # URL launcher
   url_launcher: ^6.0.9
 
-    # Reminder notification
-  flutter_local_notifications: ^14.0.0
+  # Workout Details sliding up panel
+  sliding_up_panel: ^2.0.0+1
+
+  # Video player
+  video_player: ^2.1.12
+  chewie: ^1.4.0
+
+
+  # Countdown timer
+  custom_timer: ^0.0.6
+
+  # Image library
+  image_picker: ^0.8.2
+
+  # Reminder notification
+  flutter_local_notifications: ^8.0.0
 
   # Native timezone
   flutter_native_timezone: ^2.0.0
 
   # Permission handler
-  permission_handler: ^10.2.0
-
-# Workout Details sliding up panel
-  sliding_up_panel: ^2.0.0+1
-
-  # Image library
-  image_picker: ^0.8.2
+  permission_handler: ^8.1.4+2
 
 dev_dependencies:
   flutter_test:
