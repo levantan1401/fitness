@@ -23,72 +23,72 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => new _MyAppState();
-}
+// class MyApp extends StatefulWidget {
+//   @override
+//   _MyAppState createState() => new _MyAppState();
+// }
 
-class _MyAppState extends State<MyApp> {
-  // static late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = NotificationService.flutterLocalNotificationsPlugin;
+// class _MyAppState extends State<MyApp> {
+//   // static late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = NotificationService.flutterLocalNotificationsPlugin;
 
-  @override
-  initState() {
-    super.initState();
-    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
-    // final IOSInitializationSettings initializationSettingsIOS = IOSInitializationSettings();
-    // final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+//   @override
+//   initState() {
+//     super.initState();
+//     const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
+//     // final IOSInitializationSettings initializationSettingsIOS = IOSInitializationSettings();
+//     // final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
 
-    tz.initializeTimeZones();
+//     tz.initializeTimeZones();
 
-    // flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: selectNotification);
-  }
+//     // flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: selectNotification);
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    final isLoggedIn = FirebaseAuth.instance.currentUser != null;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Fitness',
-      theme: ThemeData(
-        textTheme: TextTheme(bodyText1: TextStyle(color: ColorConstants.textColor)),
-        fontFamily: 'NotoSansKR',
-        scaffoldBackgroundColor: Colors.white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: isLoggedIn ? TabBarPage() : OnboardingPage(),
-    );
-  }
-
-  Future selectNotification(String? payload) async {
-    showDialog(
-      context: context,
-      builder: (_) {
-        return new AlertDialog(
-          title: Text("PayLoad"),
-          content: Text("Payload : $payload"),
-        );
-      },
-    );
-  }
-}
-// class MyApp extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
 //     final isLoggedIn = FirebaseAuth.instance.currentUser != null;
-
 //     return MaterialApp(
 //       debugShowCheckedModeBanner: false,
 //       title: 'Fitness',
 //       theme: ThemeData(
-//         textTheme: const TextTheme(
-//             bodyText1: TextStyle(color: ColorConstants.textColor)),
+//         textTheme: TextTheme(bodyText1: TextStyle(color: ColorConstants.textColor)),
 //         fontFamily: 'NotoSansKR',
 //         scaffoldBackgroundColor: Colors.white,
 //         visualDensity: VisualDensity.adaptivePlatformDensity,
 //       ),
-//       // home:  OnboardingPage(),
-//       // home: SignInPage(),
-//       home: const HomePage(),
+//       home: isLoggedIn ? TabBarPage() : OnboardingPage(),
+//     );
+//   }
+
+//   Future selectNotification(String? payload) async {
+//     showDialog(
+//       context: context,
+//       builder: (_) {
+//         return new AlertDialog(
+//           title: Text("PayLoad"),
+//           content: Text("Payload : $payload"),
+//         );
+//       },
 //     );
 //   }
 // }
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final isLoggedIn = FirebaseAuth.instance.currentUser != null;
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Fitness',
+      theme: ThemeData(
+        textTheme: const TextTheme(
+            bodyText1: TextStyle(color: ColorConstants.textColor)),
+        fontFamily: 'NotoSansKR',
+        scaffoldBackgroundColor: Colors.white,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home:  OnboardingPage(),
+      // home: SignInPage(),
+      // home: const HomePage(),
+    );
+  }
+}
