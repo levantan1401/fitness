@@ -101,11 +101,14 @@ class SignInContent extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: BlocBuilder<SignInBloc, SignInState>(
-        buildWhen: (_, currState) => currState is SignInButtonEnableChangedState,
+        buildWhen: (_, currState) =>
+            currState is SignInButtonEnableChangedState,
         builder: (context, state) {
           return FitnessButton(
             title: TextConstants.signIn,
-            isEnabled: state is SignInButtonEnableChangedState ? state.isEnabled : false,
+            isEnabled: state is SignInButtonEnableChangedState
+                ? state.isEnabled
+                : false,
             onTap: () {
               FocusScope.of(context).unfocus();
               bloc.add(SignInTappedEvent());
@@ -120,7 +123,7 @@ class SignInContent extends StatelessWidget {
     final bloc = BlocProvider.of<SignInBloc>(context);
     return GestureDetector(
       child: const Padding(
-        padding: const EdgeInsets.only(left: 21),
+        padding: EdgeInsets.only(left: 21),
         child: Text(
           TextConstants.forgotPassword,
           style: TextStyle(
@@ -131,7 +134,7 @@ class SignInContent extends StatelessWidget {
         ),
       ),
       onTap: () {
-        FocusScope.of(context).unfocus(); 
+        FocusScope.of(context).unfocus();
         bloc.add(ForgotPasswordTappedEvent());
       },
     );
@@ -153,7 +156,9 @@ class SignInContent extends StatelessWidget {
               placeholder: TextConstants.emailPlaceholder,
               controller: bloc.emailController,
               errorText: TextConstants.emailErrorText,
-              isError: state is ShowErrorState ? !ValidationService.email(bloc.emailController.text) : false,
+              isError: state is ShowErrorState
+                  ? !ValidationService.email(bloc.emailController.text)
+                  : false,
               onTextChanged: () {
                 bloc.add(OnTextChangeEvent());
               },
@@ -164,7 +169,9 @@ class SignInContent extends StatelessWidget {
               placeholder: TextConstants.passwordPlaceholderSignIn,
               controller: bloc.passwordController,
               errorText: TextConstants.passwordErrorText,
-              isError: state is ShowErrorState ? !ValidationService.password(bloc.passwordController.text) : false,
+              isError: state is ShowErrorState
+                  ? !ValidationService.password(bloc.passwordController.text)
+                  : false,
               obscureText: true,
               onTextChanged: () {
                 bloc.add(OnTextChangeEvent());

@@ -6,7 +6,7 @@ import 'package:fitness/core/const/text_constants.dart';
 // import 'package:fitness/screens/edit_account/edit_account_screen.dart';
 import 'package:fitness/screens/home/bloc/home_bloc.dart';
 import 'package:fitness/screens/home/widget/home_statistics.dart';
-// import 'package:fitness/screens/workout_details_screen/page/workout_details_page.dart';
+import 'package:fitness/screens/workout_details_screen/page/workout_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,7 +48,7 @@ class HomeContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             TextConstants.discoverWorkouts,
@@ -66,22 +66,22 @@ class HomeContent extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: [
               const SizedBox(width: 20),
-              // WorkoutCard(
-              //     color: ColorConstants.cardioColor,
-              //     workout: DataConstants.homeWorkouts[0],
-              //     onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              //         builder: (_) => WorkoutDetailsPage(
-              //               workout: DataConstants.workouts[0],
-              //             )))),
-              // const SizedBox(width: 15),
-              // WorkoutCard(
-              //     color: ColorConstants.armsColor,
-              //     workout: DataConstants.homeWorkouts[1],
-              //     onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              //         builder: (_) => WorkoutDetailsPage(
-              //               workout: DataConstants.workouts[2],
-              //             )))),
-              // const SizedBox(width: 20),
+              WorkoutCard(
+                  color: ColorConstants.cardioColor,
+                  workout: DataConstants.homeWorkouts[0],
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => WorkoutDetailsPage(
+                            workout: DataConstants.workouts[0],
+                          )))),
+              const SizedBox(width: 15),
+              WorkoutCard(
+                  color: ColorConstants.armsColor,
+                  workout: DataConstants.homeWorkouts[1],
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => WorkoutDetailsPage(
+                            workout: DataConstants.workouts[2],
+                          )))),
+              const SizedBox(width: 20),
             ],
           ),
         ),
@@ -102,13 +102,13 @@ class HomeContent extends StatelessWidget {
             children: [
               Text(
                 'Hi, $displayName',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 2),
-              Text(
+              const Text(
                 TextConstants.checkActivity,
                 style: TextStyle(
                   fontSize: 18,
@@ -126,7 +126,7 @@ class HomeContent extends StatelessWidget {
                 child: photoUrl == null
                     ? CircleAvatar(
                         backgroundImage: AssetImage(PathConstants.profile),
-                        radius: 60)
+                        radius: 30)
                     : CircleAvatar(
                         child: ClipOval(
                             child: FadeInImage.assetNetwork(
@@ -167,16 +167,16 @@ class HomeContent extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image(
+          const Image(
             image: AssetImage(
               PathConstants.progress,
             ),
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   TextConstants.keepProgress,
                   style: TextStyle(
@@ -184,7 +184,7 @@ class HomeContent extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 3),
+                SizedBox(height: 3),
                 Text(
                   TextConstants.profileSuccessful,
                   style: TextStyle(

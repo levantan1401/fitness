@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isLoggedIn = FirebaseAuth.instance.currentUser != null;
-
+  
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fitness',
@@ -86,9 +86,10 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:  OnboardingPage(),
+      home: isLoggedIn ? TabBarPage() : OnboardingPage(),
       // home: SignInPage(),
       // home: const HomePage(),
     );
   }
 }
+  

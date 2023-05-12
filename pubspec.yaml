@@ -32,22 +32,23 @@ dependencies:
     sdk: flutter
 
   #BloC  
-  flutter_bloc: ^7.0.1
+  flutter_bloc: ^7.2.0
 
   # Firebase
-  firebase_core: ^1.4.0
-  firebase_auth: ^3.0.1
-  firebase_storage: ^10.0.1
+  firebase_core: ^2.11.0
+  firebase_auth: ^4.5.0
+  firebase_storage: ^11.1.2
+  firebase_core_platform_interface: ^4.5.1
 
 
   # IOS Icons
   cupertino_icons: ^1.0.2
 
   # Page View dots indicator
-  dots_indicator: ^2.0.0
+  dots_indicator: ^3.0.0
 
   # Percent circle
-  percent_indicator: ^3.0.1
+  percent_indicator: ^4.2.3
 
   # URL launcher
   url_launcher: ^6.0.9
@@ -61,19 +62,21 @@ dependencies:
 
 
   # Countdown timer
-  custom_timer: ^0.0.6
+  custom_timer: ^0.2.3
 
   # Image library
   image_picker: ^0.8.2
 
   # Reminder notification
-  flutter_local_notifications: ^8.0.0
+  flutter_local_notifications: ^14.0.0+1
 
   # Native timezone
   flutter_native_timezone: ^2.0.0
 
   # Permission handler
-  permission_handler: ^8.1.4+2
+  permission_handler: ^10.2.0
+
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:
