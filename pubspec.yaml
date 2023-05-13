@@ -62,7 +62,7 @@ dependencies:
 
 
   # Countdown timer
-  custom_timer: ^0.2.3
+  custom_timer: ^0.0.6
 
   # Image library
   image_picker: ^0.8.2
