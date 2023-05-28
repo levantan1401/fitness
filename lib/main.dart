@@ -1,16 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/core/const/color_constants.dart';
-import 'package:fitness/screens/home/page/home_page.dart';
+import 'package:fitness/screens/news/page/news.dart';
+import 'package:fitness/screens/news/page/news_detail.dart';
+// import 'package:fitness/core/service/notification_service.dart';
 import 'package:fitness/screens/onboarding/page/onboarding_page.dart';
-import 'package:fitness/screens/sign_in/page/sign_in_page.dart';
-import 'package:fitness/screens/sign_up/page/sign_up_page.dart';
 import 'package:fitness/screens/tab_bar/page/tab_bar_page.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest.dart' as tz;
+// import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+// import 'package:timezone/data/latest.dart' as tz;
 
 
 void main() async {
@@ -29,18 +28,18 @@ void main() async {
 // }
 
 // class _MyAppState extends State<MyApp> {
-//   // static late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = NotificationService.flutterLocalNotificationsPlugin;
+//   static late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = NotificationService.flutterLocalNotificationsPlugin;
 
 //   @override
 //   initState() {
 //     super.initState();
 //     const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
-//     // final IOSInitializationSettings initializationSettingsIOS = IOSInitializationSettings();
-//     // final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+//     final IOSInitializationSettings initializationSettingsIOS = IOSInitializationSettings();
+//     final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
 
 //     tz.initializeTimeZones();
 
-//     // flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: selectNotification);
+//     flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: selectNotification);
 //   }
 
 //   @override
@@ -87,6 +86,11 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: isLoggedIn ? TabBarPage() : OnboardingPage(),
+      initialRoute: '/',
+      routes: {
+        News.routeName: (context) => const News(),
+        NewsDetail.routeName: (context) => const NewsDetail(),
+      }
       // home: SignInPage(),
       // home: const HomePage(),
     );

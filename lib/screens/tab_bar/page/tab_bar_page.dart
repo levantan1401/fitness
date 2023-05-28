@@ -1,10 +1,9 @@
-
-
-
 import 'package:fitness/core/const/color_constants.dart';
 import 'package:fitness/core/const/path_constants.dart';
 import 'package:fitness/core/const/text_constants.dart';
 import 'package:fitness/screens/home/page/home_page.dart';
+import 'package:fitness/screens/news/page/news.dart';
+import 'package:fitness/screens/settings/page/settings_screen.dart';
 import 'package:fitness/screens/tab_bar/bloc/tab_bar_bloc.dart';
 import 'package:fitness/screens/workouts/page/workouts_page.dart';
 import 'package:flutter/material.dart';
@@ -53,9 +52,18 @@ class TabBarPage extends StatelessWidget {
           label: TextConstants.workoutsIcon,
         ),
         BottomNavigationBarItem(
+          icon: Icon(
+            Icons.newspaper,
+            color: bloc.currentIndex == 2
+                ? ColorConstants.primaryColor
+                : Color.fromARGB(255, 212, 212, 212),
+          ),
+          label: TextConstants.newspaperIcon,
+        ),
+        BottomNavigationBarItem(
           icon: Image(
             image: const AssetImage(PathConstants.settings),
-            color: bloc.currentIndex == 2 ? ColorConstants.primaryColor : null,
+            color: bloc.currentIndex == 3 ? ColorConstants.primaryColor : null,
           ),
           label: TextConstants.settingsIcon,
         ),
@@ -67,7 +75,7 @@ class TabBarPage extends StatelessWidget {
   }
 
   Widget _createBody(BuildContext context, int index) {
-    final children = [HomePage(), WorkoutsPage()];
+    final children = [HomePage(), WorkoutsPage(), News(), SettingsScreen()];
     return children[index];
   }
 }

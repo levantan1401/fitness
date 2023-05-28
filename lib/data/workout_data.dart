@@ -8,7 +8,7 @@ class WorkoutData {
   String? exercises;
   String? minutes;
   int? currentProgress;
-  dynamic? progress;
+  dynamic progress;
   String? image;
   List<ExerciseData>? exerciseDataList;
 
