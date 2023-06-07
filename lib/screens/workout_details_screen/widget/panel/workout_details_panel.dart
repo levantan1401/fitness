@@ -1,8 +1,8 @@
 import 'package:fitness/core/const/path_constants.dart';
 import 'package:fitness/core/const/text_constants.dart';
 import 'package:fitness/data/workout_data.dart';
+import 'package:fitness/screens/common_widgets/custom_tag.dart';
 import 'package:fitness/screens/workout_details_screen/widget/panel/exercises_list.dart';
-import 'package:fitness/screens/workout_details_screen/widget/panel/workout_tag.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutDetailsPanel extends StatelessWidget {
@@ -59,12 +59,12 @@ class WorkoutDetailsPanel extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         children: [
-          WorkoutTag(
+          CustomTag(
             icon: PathConstants.timeTracker,
             content: "${workout.minutes}:00",
           ),
           const SizedBox(width: 15),
-          WorkoutTag(
+          CustomTag(
             icon: PathConstants.exerciseTracker,
             content: "${workout.exercises} ${TextConstants.exercisesLowercase}",
           ),

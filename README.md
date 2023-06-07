@@ -12,4 +12,4 @@ Thường được sử dụng trong:
     --> Khi bạn muốn so sánh một giá trị với một giá trị vô cùng lớn hoặc vô cùng nhỏ.
     --> Khi bạn muốn tính toán một biểu thức có chứa giá trị vô cùng lớn hoặc vô cùng nhỏ.
     
-
+demo

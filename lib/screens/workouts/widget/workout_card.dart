@@ -48,8 +48,7 @@ class WorkoutCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            '${workout.title}',
+                          Text('${workout.title}',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                           const SizedBox(height: 3),
@@ -64,7 +63,10 @@ class WorkoutCard extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2),
                           const SizedBox(height: 3),
-                          Text('${workout.minutes}' + " " + TextConstants.minutes,
+                          Text(
+                              '${workout.minutes}' +
+                                  " " +
+                                  TextConstants.minutes,
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
@@ -95,8 +97,8 @@ class WorkoutCard extends StatelessWidget {
                     Expanded(
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
-                            child:
-                                Image.asset('${workout.image}', fit: BoxFit.fill))),
+                            child: Image.asset('${workout.image}',
+                                fit: BoxFit.fill))),
                   ],
                 ),
               ),

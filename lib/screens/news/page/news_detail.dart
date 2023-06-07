@@ -1,3 +1,4 @@
+import 'package:fitness/core/const/color_constants.dart';
 import 'package:fitness/data/news_data.dart';
 import 'package:fitness/screens/news/widget/custom_tag.dart';
 import 'package:fitness/screens/news/widget/image_container.dart';
@@ -83,18 +84,18 @@ class _BottomNewsBody extends StatelessWidget {
               width: 30.0,
             ),
             CustomTag(
-              backgroundColor: Colors.grey.shade200,
+              backgroundColor: const Color.fromRGBO(99, 88, 225, 1).withOpacity(0.12),
               children: [
                 const Icon(
                   Icons.timer,
-                  color: Colors.grey,
+                  color: ColorConstants.primaryColor,
                 ),
                 const SizedBox(
                   width: 10.0,
                 ),
                 Text(
                   '${DateTime.now().difference(news.createAt).inHours}H',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color:ColorConstants.primaryColor),
                 )
               ],
             ),
@@ -102,18 +103,18 @@ class _BottomNewsBody extends StatelessWidget {
               width: 30.0,
             ),
             CustomTag(
-              backgroundColor: Colors.grey.shade200,
+              backgroundColor: const Color.fromRGBO(99, 88, 225, 1).withOpacity(0.12),
               children: [
                 const Icon(
                   Icons.remove_red_eye,
-                  color: Colors.grey,
+                  color: ColorConstants.primaryColor,
                 ),
                 const SizedBox(
                   width: 10.0,
                 ),
                 Text(
                   '${news.views}',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color:ColorConstants.primaryColor),
                 )
               ],
             ),

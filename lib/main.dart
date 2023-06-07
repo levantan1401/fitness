@@ -11,7 +11,6 @@ import 'package:flutter/services.dart';
 // import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 // import 'package:timezone/data/latest.dart' as tz;
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
@@ -74,26 +73,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isLoggedIn = FirebaseAuth.instance.currentUser != null;
-  
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Fitness',
-      theme: ThemeData(
-        textTheme: const TextTheme(
-            bodyText1: TextStyle(color: ColorConstants.textColor)),
-        fontFamily: 'NotoSansKR',
-        scaffoldBackgroundColor: Colors.white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: isLoggedIn ? TabBarPage() : OnboardingPage(),
-      initialRoute: '/',
-      routes: {
-        News.routeName: (context) => const News(),
-        NewsDetail.routeName: (context) => const NewsDetail(),
-      }
-      // home: SignInPage(),
-      // home: const HomePage(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Fitness',
+        theme: ThemeData(
+          textTheme: const TextTheme(
+              bodyText1: TextStyle(color: ColorConstants.textColor)),
+          fontFamily: 'NotoSansKR',
+          scaffoldBackgroundColor: Colors.white,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: isLoggedIn ? TabBarPage() : OnboardingPage(),
+        initialRoute: '/',
+        routes: {
+          News.routeName: (context) => const News(),
+          NewsDetail.routeName: (context) => const NewsDetail(),
+        }
+        // home: SignInPage(),
+        // home: const HomePage(),
+        );
   }
 }
-  

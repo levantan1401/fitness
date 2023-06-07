@@ -45,91 +45,207 @@ class _BreakingNews extends StatelessWidget {
   final List<NewsData> newsDatas;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Breaking News",
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    height: 1.25,
-                    color: Colors.black),
-              ),
-              Text(
-                "More",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(color: Colors.black),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          SizedBox(
-            height: 250,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: newsDatas.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  margin: const EdgeInsets.only(right: 10),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        NewsDetail.routeName,
-                        arguments: newsDatas[index],
-                      );
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ImageContainer(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            imageUrl: newsDatas[index].imageUrl),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          newsDatas[index].title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  fontWeight: FontWeight.bold, height: 1.5),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          '${DateTime.now().difference(newsDatas[index].createAt).inHours} hours ago',
-                          style:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'by ${newsDatas[index].author}',
-                          style:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(),
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              },
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: _ArticlesAboutFitnessNews(newsDatas: newsDatas),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0, top: 0.0, right: 10.0, bottom: 0),
+          child: _NutritionRegime(newsDatas: newsDatas),
+        ),
+      ],
+    );
+  }
+}
+
+class _NutritionRegime extends StatelessWidget {
+  const _NutritionRegime({
+    super.key,
+    required this.newsDatas,
+  });
+
+  final List<NewsData> newsDatas;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Nutrition Regime",
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  height: 1.25,
+                  color: Colors.black),
             ),
+            Text(
+              "More",
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(color: Colors.black),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        SizedBox(
+          height: 250,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: newsDatas.length,
+            itemBuilder: (context, index) {
+              return Container(
+                width: MediaQuery.of(context).size.width * 0.5,
+                margin: const EdgeInsets.only(right: 10),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      NewsDetail.routeName,
+                      arguments: newsDatas[index],
+                    );
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ImageContainer(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          imageUrl: newsDatas[index].imageUrl),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        newsDatas[index].title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(fontWeight: FontWeight.bold, height: 1.5),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        '${DateTime.now().difference(newsDatas[index].createAt).inHours} hours ago',
+                        style:
+                            Theme.of(context).textTheme.bodySmall!.copyWith(),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'by ${newsDatas[index].author}',
+                        style:
+                            Theme.of(context).textTheme.bodySmall!.copyWith(),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ArticlesAboutFitnessNews extends StatelessWidget {
+  const _ArticlesAboutFitnessNews({
+    super.key,
+    required this.newsDatas,
+  });
+
+  final List<NewsData> newsDatas;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Articles News",
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  height: 1.25,
+                  color: Colors.black),
+            ),
+            Text(
+              "More",
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(color: Colors.black),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        SizedBox(
+          height: 250,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: newsDatas.length,
+            itemBuilder: (context, index) {
+              return Container(
+                width: MediaQuery.of(context).size.width * 0.5,
+                margin: const EdgeInsets.only(right: 10),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      NewsDetail.routeName,
+                      arguments: newsDatas[index],
+                    );
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ImageContainer(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          imageUrl: newsDatas[index].imageUrl),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        newsDatas[index].title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(fontWeight: FontWeight.bold, height: 1.5),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        '${DateTime.now().difference(newsDatas[index].createAt).inHours} hours ago',
+                        style:
+                            Theme.of(context).textTheme.bodySmall!.copyWith(),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'by ${newsDatas[index].author}',
+                        style:
+                            Theme.of(context).textTheme.bodySmall!.copyWith(),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
@@ -154,14 +270,15 @@ class _NewOfTheDay extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTag(
-            backgroundColor: Colors.grey.withAlpha(150),
+            backgroundColor:
+                const Color.fromRGBO(99, 88, 225, 1).withOpacity(0.12),
             children: [
               Text(
                 "News of the Day",
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!
-                    .copyWith(color: Colors.white),
+                    .copyWith(color: ColorConstants.primaryColor),
               )
             ],
           ),
