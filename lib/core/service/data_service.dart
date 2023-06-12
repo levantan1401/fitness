@@ -6,7 +6,7 @@ import 'package:fitness/data/workout_data.dart';
 
 class DataService {
   static Future<List<WorkoutData>> getWorkoutsForUser() async {
-    final currUserEmail = GlobalConstants.currentUser.mail;
+    final currUserEmail = GlobalConstants.currentUser?.mail;
 
     // await UserStorageService.deleteSecureData('${currUserEmail}Workouts');
 
@@ -33,7 +33,7 @@ class DataService {
     GlobalConstants.workouts = allWorkouts;
     final workoutsStr = allWorkouts.map((e) => e.toJsonString()).toList();
     final encoded = json.encode(workoutsStr);
-    final currUserEmail = GlobalConstants.currentUser.mail;
+    final currUserEmail = GlobalConstants.currentUser?.mail;
     await UserStorageService.writeSecureData(
       '${currUserEmail}Workouts',
       encoded,

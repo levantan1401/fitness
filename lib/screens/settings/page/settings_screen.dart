@@ -5,6 +5,7 @@ import 'package:fitness/core/const/color_constants.dart';
 import 'package:fitness/core/const/path_constants.dart';
 import 'package:fitness/core/const/text_constants.dart';
 import 'package:fitness/core/service/auth_service.dart';
+import 'package:fitness/data/user_data.dart';
 import 'package:fitness/screens/common_widgets/settings_container.dart';
 import 'package:fitness/screens/edit_account/page/edit_account_page.dart';
 import 'package:fitness/screens/reminder/page/reminder_page.dart';
@@ -48,6 +49,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget _settingsContent(BuildContext context) {
     final User? user = FirebaseAuth.instance.currentUser;
     final displayName = user?.displayName ?? "No Username";
+  
     photoUrl = user?.photoURL ?? null;
     return SafeArea(
       child: SingleChildScrollView(

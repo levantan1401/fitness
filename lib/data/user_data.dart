@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/data/workout_data.dart';
 
@@ -6,6 +9,7 @@ class UserData {
   String? photo;
   String? mail;
   List<WorkoutData>? workouts;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   UserData({
     required this.name,
@@ -34,7 +38,8 @@ class UserData {
     if (this.workouts != null) {
       data['workouts'] = this.workouts!.map((v) => v.toJson()).toList();
     }
-    return data;
+    addDataToFirestore(data);
+    return data; 
   }
 
   static fromFirebase(User? user) {
@@ -46,5 +51,19 @@ class UserData {
             workouts: [],
           )
         : [];
+  }
+  String toJsonString() {
+    final str = json.encode(toJson());
+    return str;
+  }
+
+  void addDataToFirestore(Map<String, dynamic> jsonData) async {
+    try {
+      CollectionReference collectionRef = firestore.collection('users');
+      await collectionRef.add(jsonData);
+      print('Dữ liệu đã được thêm vào Firestore thành công.');
+    } catch (e) {
+      print('Lỗi khi thêm dữ liệu vào Firestore: $e');
+    }
   }
 }

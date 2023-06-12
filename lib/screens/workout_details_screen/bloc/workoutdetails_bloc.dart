@@ -8,20 +8,26 @@ import 'package:meta/meta.dart';
 part 'workoutdetails_event.dart';
 part 'workoutdetails_state.dart';
 
-class WorkoutDetailsBloc extends Bloc<WorkoutDetailsEvent, WorkoutDetailsState> {
-  final WorkoutData workout;
-  WorkoutDetailsBloc({required this.workout}) : super(WorkoutDetailsInitial());
+class WorkoutDetailsBloc
+    extends Bloc<WorkoutDetailsEvent, WorkoutDetailsState> {
+  WorkoutDetailsBloc() : super(WorkoutDetailsInitial());
+
+  late WorkoutData workout;
 
   @override
   Stream<WorkoutDetailsState> mapEventToState(
     WorkoutDetailsEvent event,
   ) async* {
-    if (event is BackTappedEvent) {
+    if (event is WorkoutDetailsInitialEvent) {
+      workout = event.workout;
+      yield ReloadWorkoutDetailsState(workout: workout);
+    } else if (event is BackTappedEvent) {
       yield BackTappedState();
-    } else if (event is WorkoutExerciseCellTappedEvent) {
-      yield WorkoutExerciseCellTappedState(
-        currentExercise: event.currentExercise,
-        nextExercise: event.nextExercise,
+    } else if (event is StartTappedEvent) {
+      yield StartTappedState(
+        workout: event.workout ?? workout,
+        index: event.index ?? 0,
+        isReplace: event.isReplace,
       );
     }
   }

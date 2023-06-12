@@ -141,7 +141,6 @@ class SignInContent extends StatelessWidget {
   }
 
   Widget _createForm(BuildContext context) {
-    // final bloc = BlocProvider.of<SignInBloc>();
     final bloc = BlocProvider.of<SignInBloc>(context);
     return BlocBuilder<SignInBloc, SignInState>(
       buildWhen: (_, currState) => currState is ShowErrorState,

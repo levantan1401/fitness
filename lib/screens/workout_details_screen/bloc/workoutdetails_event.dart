@@ -5,12 +5,22 @@ abstract class WorkoutDetailsEvent {}
 
 class BackTappedEvent extends WorkoutDetailsEvent {}
 
-class WorkoutExerciseCellTappedEvent extends WorkoutDetailsEvent {
-  final ExerciseData currentExercise;
-  final ExerciseData? nextExercise;
+class WorkoutDetailsInitialEvent extends WorkoutDetailsEvent {
+  final WorkoutData workout;
 
-  WorkoutExerciseCellTappedEvent({
-    required this.currentExercise,
-    required this.nextExercise,
+  WorkoutDetailsInitialEvent({
+    required this.workout,
+  });
+}
+
+class StartTappedEvent extends WorkoutDetailsEvent {
+  final WorkoutData? workout;
+  final int? index;
+  final bool isReplace;
+
+  StartTappedEvent({
+    this.workout,
+    this.index,
+    this.isReplace = false,
   });
 }

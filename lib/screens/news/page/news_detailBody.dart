@@ -4,16 +4,16 @@ import 'package:fitness/screens/news/widget/custom_tag.dart';
 import 'package:fitness/screens/news/widget/image_container.dart';
 import 'package:flutter/material.dart';
 
-class NewsDetail extends StatelessWidget {
-  const NewsDetail({Key? key}) : super(key: key);
+class NewsDetailBody extends StatelessWidget {
+  const NewsDetailBody({Key? key}) : super(key: key);
 
-  static const routeName = '/news/detail';
+  static const routeName = '/news/detailbody';
   @override
   Widget build(BuildContext context) {
-    final news = ModalRoute.of(context)!.settings.arguments as NewsData;
+    final newsBody = ModalRoute.of(context)!.settings.arguments as NewsDataBody;
     return ImageContainer(
       width: double.infinity,
-      imageUrl: news.image_Intro,
+      imageUrl: newsBody.image_Intro,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -25,9 +25,9 @@ class NewsDetail extends StatelessWidget {
         body: ListView(
           children: [
             _NewsHeadLine(
-              news: news,
+              news: newsBody,
             ),
-            _BottomNewsBody(news: news),
+            _BottomNewsBody(news: newsBody),
           ],
         ),
       ),
@@ -41,11 +41,10 @@ class _BottomNewsBody extends StatelessWidget {
     required this.news,
   });
 
-  final NewsData news;
+  final NewsDataBody news;
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       padding: const EdgeInsets.all(20.0),
       decoration: const BoxDecoration(
@@ -67,7 +66,7 @@ class _BottomNewsBody extends StatelessWidget {
                   backgroundImage: NetworkImage(news.authorImageUrl),
                 ),
                 const SizedBox(
-                  width: 30.0,
+                  width: 10.0,
                 ),
                 Text(
                   news.category,
@@ -168,7 +167,7 @@ class _NewsHeadLine extends StatelessWidget {
     required this.news,
   });
 
-  final NewsData news;
+  final NewsDataBody news;
   @override
   Widget build(BuildContext context) {
     return Padding(

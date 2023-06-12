@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class ExerciseData {
   String? id;
   String? title;
@@ -8,6 +10,8 @@ class ExerciseData {
   String? video;
   String? description;
   List<String>? steps;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
 
   ExerciseData({
     this.id,
@@ -38,6 +42,7 @@ class ExerciseData {
     data['video'] = video;
     data['description'] = description;
     data['steps'] = steps;
+    // addDataToFirestore(data);
     return data;
   }
 
@@ -45,4 +50,13 @@ class ExerciseData {
     final str = json.encode(toJson());
     return str;
   }
+  // void addDataToFirestore(Map<String, dynamic> jsonData) async {
+  //   try {
+  //     CollectionReference collectionRef = firestore.collection('exercises');
+  //     await collectionRef.add(jsonData);
+  //     print('Dữ liệu đã được thêm vào Firestore thành công.');
+  //   } catch (e) {
+  //     print('Lỗi khi thêm dữ liệu vào Firestore: $e');
+  //   }
+  // }
 }

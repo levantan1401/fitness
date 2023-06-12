@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/core/const/color_constants.dart';
 import 'package:fitness/screens/news/page/news.dart';
 import 'package:fitness/screens/news/page/news_detail.dart';
+import 'package:fitness/screens/news/page/news_detailBody.dart';
 // import 'package:fitness/core/service/notification_service.dart';
 import 'package:fitness/screens/onboarding/page/onboarding_page.dart';
 import 'package:fitness/screens/tab_bar/page/tab_bar_page.dart';
@@ -89,6 +90,7 @@ class MyApp extends StatelessWidget {
         routes: {
           News.routeName: (context) => const News(),
           NewsDetail.routeName: (context) => const NewsDetail(),
+          NewsDetailBody.routeName: (context) => const NewsDetailBody(),
         }
         // home: SignInPage(),
         // home: const HomePage(),

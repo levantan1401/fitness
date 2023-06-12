@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class WorkoutDetailsBody extends StatelessWidget {
   final WorkoutData workout;
   WorkoutDetailsBody({required this.workout});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,7 +55,7 @@ class WorkoutDetailsBody extends StatelessWidget {
       child: Image(
         image: AssetImage('${workout.image}'),
         fit: BoxFit.cover,
-      ),
+             ),
     );
   }
 }

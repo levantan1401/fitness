@@ -13,6 +13,7 @@ class WorkoutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<WorkoutsBloc>(context);
+    print(">>>>>>>>>>__________ ${workout.toJson()}");
     return Container(
       width: double.infinity,
       height: 140,
@@ -22,9 +23,10 @@ class WorkoutCard extends StatelessWidget {
         color: ColorConstants.white,
         boxShadow: [
           BoxShadow(
-              color: ColorConstants.textBlack.withOpacity(0.12),
-              blurRadius: 5.0,
-              spreadRadius: 1.1)
+            color: ColorConstants.textBlack.withOpacity(0.12),
+            blurRadius: 5.0,
+            spreadRadius: 1.1,
+          )
         ],
       ),
       child: Material(
@@ -48,14 +50,12 @@ class WorkoutCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('${workout.title}',
+                          Text(workout.title ?? "",
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                           const SizedBox(height: 3),
                           Text(
-                              '${workout.exercises}' +
-                                  " " +
-                                  TextConstants.exercisesUppercase,
+                              '${workout.exerciseDataList!.length} ${TextConstants.exercisesUppercase}',
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
@@ -64,7 +64,7 @@ class WorkoutCard extends StatelessWidget {
                               maxLines: 2),
                           const SizedBox(height: 3),
                           Text(
-                              '${workout.minutes}' +
+                              '${_getWorkoutMinutes()}' +
                                   " " +
                                   TextConstants.minutes,
                               style: TextStyle(
@@ -82,7 +82,7 @@ class WorkoutCard extends StatelessWidget {
                                 const EdgeInsets.only(right: 30.0, left: 2),
                             child: LinearPercentIndicator(
                               percent:
-                                  workout.currentProgress! / workout.progress,
+                                  workout.currentProgress! / workout.progress!,
                               progressColor: ColorConstants.primaryColor,
                               backgroundColor:
                                   ColorConstants.primaryColor.withOpacity(0.12),
@@ -95,10 +95,12 @@ class WorkoutCard extends StatelessWidget {
                     ),
                     SizedBox(width: 60),
                     Expanded(
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: Image.asset('${workout.image}',
-                                fit: BoxFit.fill))),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child:
+                            Image.asset(workout.image ?? "", fit: BoxFit.fill),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -107,5 +109,15 @@ class WorkoutCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  int _getWorkoutMinutes() {
+    var minutes = 0;
+    final minutesList =
+        workout.exerciseDataList!.map((e) => e.minutes).toList();
+    minutesList.forEach((e) {
+      minutes += e!;
+    });
+    return minutes;
   }
 }
